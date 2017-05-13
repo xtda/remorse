@@ -1,5 +1,8 @@
 {
   "name": "v2-website",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "4.0.0-alpha.6",
+    "bootswatch": "4.0.0-alpha.6"
+  }
 }
