@@ -15,4 +15,5 @@
 //= require jquery
 //= require tether
 //= require bootstrap/dist/js/bootstrap
+//= require trumbowyg/dist/trumbowyg.js
 //= require_tree .

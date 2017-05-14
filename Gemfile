@@ -21,6 +21,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'administrate', git: 'https://github.com/xtda/administrate.git'
 gem 'administrate-field-password'
 
+gem 'kaminari'
+
+gem 'friendly_id', '~> 5.1'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'

@@ -20,3 +20,7 @@ jquery@>=1.9.1:
 tether@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/tether/-/tether-1.4.0.tgz#0f9fa171f75bf58485d8149e94799d7ae74d1c1a"
+
+trumbowyg@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/trumbowyg/-/trumbowyg-2.5.1.tgz#57e292a468c92f6244ebb41013219288345e78f8"

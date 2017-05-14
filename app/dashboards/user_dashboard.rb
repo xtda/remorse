@@ -14,7 +14,7 @@ class UserDashboard < Administrate::BaseDashboard
     password: Field::Password,
     password_confirmation: Field::Password,
     password_digest: Field::Password,
-    access_level: Field::String.with_options(searchable: true),
+    access_level: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     remember_digest: Field::String,

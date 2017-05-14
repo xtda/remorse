@@ -15,17 +15,22 @@
                     <li class="nav-item">
                         <a class="nav-link" href="https://www.wowprogress.com/guild/us/frostmourne/Remorse" target="_blank" rel="noopener noreferrer">WoW Progress</a>
                     </li>
-                    <% if logged_in? && current_user.admin? %>
+                    <% if logged_in? %> 
+                    <% if current_user.admin? || current_user.dev? %>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <% if current_user.dev? %>
                                 <%= link_to "Admin", admin_root_path, class: 'dropdown-item' %>
+                                <div class="dropdown-divider"></div>
                             <% end %>
+                            <%= link_to 'All posts', page_path,class: 'dropdown-item' %>
+                            <%= link_to 'New post', posts_path,class: 'dropdown-item '%>
                             <div class="dropdown-divider"></div>
                             <%= link_to "Sign out", logout_path, class: 'dropdown-item', method: 'delete' %>
                             </div>
                     </li>
+                    <% end %>
                     <% end %>
                 </ul>
             </div>

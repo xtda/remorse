@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+99.times do |n|
+  Post.create(title: "I got #{n+1} problems",
+              short_desc: "But a bitch ain't one",
+              content: 'Hello Worlds',
+              published: true
+             )
+end

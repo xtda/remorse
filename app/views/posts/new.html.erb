@@ -1,0 +1,20 @@
+<%= form_for(@post) do |f| %>
+  <div class="field">
+    <%= f.label :title, 'Title '%>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  </br>
+ <div class="field">
+    <%= f.label :short_desc, 'Subject'%>
+    <%= f.text_field :short_desc, class: 'form-control' %>
+  </div>
+  <%= f.text_area :content, id: 'content' %>
+  </br>
+  <div class="form-check">
+        <%= f.label :published, class: "form-check-label" do %>
+          <%= f.check_box :published, class: "form-check-input"%>
+          Publish to front page?
+          <% end %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>
