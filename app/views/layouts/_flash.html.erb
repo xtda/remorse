@@ -1,0 +1,6 @@
+<% flash.each do |message_type, message| %>
+<%= content_tag(:div, message, class: "alert alert-#{message_type}") do %>
+<%= link_to 'x' , '#', class: 'close', data: { dismiss: 'alert' } %>
+ <%= message %>
+<% end %>
+<% end %>
