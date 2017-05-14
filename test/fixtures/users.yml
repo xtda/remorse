@@ -1,2 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+one:
+  name: One User
+  email: one@remorse-is.pro
+  password_digest: <%= User.digest('password') %>
+  access_level: 0

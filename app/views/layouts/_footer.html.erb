@@ -1,4 +1,4 @@
       <footer>
-        <p class="float-right"><a href="#">Back to top</a></p>
+        <p class="float-right"><% if !logged_in? %><%= link_to 'Login', login_path %> |<% end %> <a href="#">Back to top</a></p>
         <p>&copy; 2017 Remorse</p> 
       </footer>

@@ -7,14 +7,18 @@
     
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% if current_page?(root_url) %>
+      <%= stylesheet_link_tag    'home', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% end %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    
   </head>
 
   <body>
     <%= render 'layouts/menubar' %>
-    <%= render 'layouts/carousel' %>
-
+    <% if current_page?(root_url) %>
+      <%= render 'layouts/carousel' %>
+    <% end %>
     <div class="container content">
       <%= render 'layouts/flash' %>
       <%= yield %>
