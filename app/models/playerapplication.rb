@@ -3,6 +3,7 @@ class Playerapplication < ApplicationRecord
 
   validates :player_name, presence: true
   validates :player_class, inclusion: { in: %w(Druid Hunter Mage Paladin Priest Rogue Shaman Warlock Warrior DeathKnight Monk DemonHunter) }
+  validates :player_battlenettag, presence: true
   validates :link_warcraftlogs, presence: true
   validates :link_wowprogress, presence: true
 

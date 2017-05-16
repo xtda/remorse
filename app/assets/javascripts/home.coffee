@@ -20,7 +20,8 @@ $ ->
       $('#spec_icons').imagepicker
         hide_select: true
         show_label: false
-      $('#details').hide();
+      if $('#error_explanation').length == 0
+        $('#details').hide()
       $('#prefill').click (event) ->
         event.preventDefault()
         getUser $('#playerapplication_player_realm').val(), $('#playerapplication_player_name').val()

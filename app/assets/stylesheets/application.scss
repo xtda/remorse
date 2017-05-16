@@ -73,11 +73,19 @@ strong{
   }
 }
 .class_icons {
+  float: right;
   img {
     width: 32px;
     height: 32px;
     display: none;
+  }
 }
+
+.class_icons_admin {
+  img {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 .class_icons_hidden {

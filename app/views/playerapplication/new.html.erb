@@ -2,7 +2,7 @@
 <h5> Application form </h5>
 <%= form_for(@application) do |f| %>
 <br/>
-
+     <%= render 'shared/error_messages', object: f.object %>
      <div class="form-group ">
         <%= f.label :player_name, "Character's Name"%>
         <%= f.text_field :player_name , class: 'form-control ', required: true%>
@@ -73,6 +73,7 @@
         <%= f.label :question_anythingelse, 'Anything else you feel is relevent to your application' %>
         <%= f.text_area :question_anythingelse, class: 'form-control',rows: 5 %>
     </div>
+    <%= recaptcha_tags %>
     <div class="submit-field">
         <%= f.submit "Apply", class: "btn btn-success"  %>
      </div>

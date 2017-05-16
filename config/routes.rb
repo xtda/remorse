@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
  
   get 'page/new', to: 'posts#new', as: 'posts'
   get 'page/:id', to: 'posts#show', as: 'post'
@@ -10,7 +11,11 @@ Rails.application.routes.draw do
 
   get '/apply', to: 'playerapplication#new'
   get 'application/:id', to: 'playerapplication#show', as: 'playerapplication'
+  get 'application', to: 'playerapplication#index'
   post 'apply', to: 'playerapplication#create', as: 'playerapplications'
+
+  get 'recruitment', to: 'recruitment#index',as: 'recruitment'
+  patch 'recruitment', to: 'recruitment#update'
 
   namespace :admin do
     resources :users
