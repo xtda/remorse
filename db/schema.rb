@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514113347) do
+ActiveRecord::Schema.define(version: 20170516084852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,33 @@ ActiveRecord::Schema.define(version: 20170514113347) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "playerapplications", force: :cascade do |t|
+    t.string "player_battlenettag"
+    t.string "player_name"
+    t.string "player_realm"
+    t.string "player_class"
+    t.string "player_mainspec"
+    t.integer "player_mainspec_awt"
+    t.string "player_offspec"
+    t.integer "player_offspec_awt"
+    t.text "player_offspec_confidence"
+    t.text "player_alts"
+    t.text "player_previousguilds"
+    t.string "link_wowprogress"
+    t.string "link_warcraftlogs"
+    t.text "question_theorycraft"
+    t.text "question_whyyou"
+    t.text "question_whyremorse"
+    t.text "question_anythingelse"
+    t.string "viewkey"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_battlenettag"], name: "index_playerapplications_on_player_battlenettag"
+    t.index ["player_class"], name: "index_playerapplications_on_player_class"
+    t.index ["player_name"], name: "index_playerapplications_on_player_name"
+    t.index ["viewkey"], name: "index_playerapplications_on_viewkey"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "short_desc"
@@ -36,6 +63,14 @@ ActiveRecord::Schema.define(version: 20170514113347) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.string "name", null: false
+    t.jsonb "setting", default: "{}", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["setting"], name: "index_settings_on_setting"
   end
 
   create_table "users", force: :cascade do |t|

@@ -16,4 +16,5 @@
 //= require tether
 //= require bootstrap/dist/js/bootstrap
 //= require trumbowyg/dist/trumbowyg.js
+//= require image-picker
 //= require_tree .

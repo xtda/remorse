@@ -25,6 +25,12 @@ gem 'kaminari'
 
 gem 'friendly_id', '~> 5.1'
 
+gem 'recaptcha', require: 'recaptcha/rails'
+
+gem 'dotenv-rails', groups: [:development, :test]
+
+gem 'rest-client'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'

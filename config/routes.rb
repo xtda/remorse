@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+ 
   get 'page/new', to: 'posts#new', as: 'posts'
   get 'page/:id', to: 'posts#show', as: 'post'
   post 'page/new', to: 'posts#create'
@@ -8,14 +8,24 @@ Rails.application.routes.draw do
   get 'page', to: 'posts#index'
   delete 'page/:id', to: 'posts#destroy'
 
-  #get 'posts/create'
-  #get 'posts/destroy'
-  #get 'posts/edit'
+  get '/apply', to: 'playerapplication#new'
+  get 'application/:id', to: 'playerapplication#show', as: 'playerapplication'
+  post 'apply', to: 'playerapplication#create', as: 'playerapplications'
 
   namespace :admin do
     resources :users
     root to: 'users#index'
   end
+
+  #constraints subdomain: 'api' do
+    scope module: 'api' do
+      namespace :v1 do
+        get 'health', to: 'health#index'
+        get 'app/:char/:realm', to: 'guildapp#show'
+        get 'recuriting', to: 'guildapp#recruiting'
+      end
+    end
+  #end
 
   root 'home#index'
   get    '/login',   to: 'sessions#new'

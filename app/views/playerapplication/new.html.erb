@@ -1,0 +1,81 @@
+<br/>
+<h5> Application form </h5>
+<%= form_for(@application) do |f| %>
+<br/>
+
+     <div class="form-group ">
+        <%= f.label :player_name, "Character's Name"%>
+        <%= f.text_field :player_name , class: 'form-control ', required: true%>
+     </div>
+    <div class="form-group">
+        <%= f.label :player_realm, "Realm"%>
+        <%= f.select :player_realm ,options_for_select(@REALM_LIST,selected: 'Frostmourne'), {}, class: 'form-control ', required: true%>
+     </div>
+    <% if true %>
+    <div class="form-group">
+        <%= f.button 'Auto populate', class: 'btn btn-success',id: 'prefill','aria-describedby': 'autoHelp','data-loading-text': "<i class='fa fa-circle-o-notch fa-spin'></i> Loading"%>
+        <%= f.button 'Manual', class: 'btn btn-primary',id: "manual" %>
+        <small id="autoHelp" class="form-text text-muted">Auto populate information from the armory based on current spec</small>
+        <small id="autoHelp" class="form-text text-muted">If no character is found you can manually enter details</small>
+    </div>
+
+    <% end %>
+    <div id="details">
+    <div class="form-group ">
+        <%= f.label :player_battlenettag, "What is your BattleTag?"%>
+        <%= f.text_field :player_battlenettag , class: 'form-control ', required: true%>
+    </div>
+    <div class="form-group">
+        <%= f.label :player_class, 'Class'%>
+        <%= f.select :player_class, ['Druid', 'Hunter', 'Mage', 'Paladin', 'Priest', 'Rogue', 'Shaman', 'Warlock', 'Warrior', ['Death Knight','DeathKnight'], 'Monk', ['Demon Hunter','DemonHunter']],{},{class: 'form-control'}%>
+    </div>
+    <div class="form-group">
+        <%= f.label :player_mainspec, 'Your main specialisation'%>
+        <%= f.text_field :player_mainspec, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :player_mainspec_awt, 'Artifact level weapon for main specialisation'%>
+        <%= f.number_field :player_mainspec_awt, class: 'form-control '%>
+     </div>
+     <div class="form-group">
+        <%= f.label :player_offspec_confidence, 'Do you have an offspec? What is its gear like? are you confident in playing your offspec?'%>
+        <%= f.text_area :player_offspec_confidence, class: 'form-control',rows: 4 %>
+     </div>
+    <div class="form-group">
+        <%= f.label :player_alts, 'Do you have any alts you may want to also bring to the guild?'%>
+        <%= f.text_area :player_alts, class: 'form-control',rows: 4 %>
+     </div>
+     <div class="form-group">
+        <%= f.label :player_previousguilds, 'What are some previous guilds you have been apart of? (if any)' %>
+        <%= f.text_area :player_previousguilds, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :link_wowprogress, 'Link to your WoW Progress profile'%>
+        <%= f.text_field :link_wowprogress, class: 'form-control', required: true %>
+     </div>
+      <div class="form-group">
+        <%= f.label :link_warcraftlogs, 'Link to your Warcraft Logs'%>
+        <%= f.text_field :link_warcraftlogs, class: 'form-control', required: true %>
+     </div>
+     <div class="form-group">
+        <%= f.label :question_theorycraft, 'How do you stay up to date on your class? What sources do you use for theorycrafting?'%>
+        <%= f.text_area :question_theorycraft, class: 'form-control',rows: 5 %>
+     </div>
+      <div class="form-group">
+        <%= f.label :question_whyyou, 'Why you? What makes you unique? What will you bring to Remorse?' %>
+        <%= f.text_area :question_whyyou, class: 'form-control',rows: 5 %>
+     </div>
+     <div class="form-group">
+        <%= f.label :question_whyremorse, 'Why remorse? What makes you want to join us?' %>
+        <%= f.text_area :question_whyremorse, class: 'form-control',rows: 5 %>
+     </div>
+    <div class="form-group">
+        <%= f.label :question_anythingelse, 'Anything else you feel is relevent to your application' %>
+        <%= f.text_area :question_anythingelse, class: 'form-control',rows: 5 %>
+    </div>
+    <div class="submit-field">
+        <%= f.submit "Apply", class: "btn btn-success"  %>
+     </div>
+     </div>
+<% end %>
+</br>

@@ -5,6 +5,10 @@
 
 @import url('https://fonts.googleapis.com/css?family=Asap');
 
+/*
+*= require image-picker
+*/
+
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
@@ -15,6 +19,9 @@ body {
   padding-top: 60px;
   padding-bottom: 3rem;
   font-family: 'Asap', sans-serif;
+}
+strong{
+ font-weight:bold;
 }
 
 .content {
@@ -64,4 +71,15 @@ body {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+.class_icons {
+  img {
+    width: 32px;
+    height: 32px;
+    display: none;
+}
+}
+
+.class_icons_hidden {
+  display: none;
 }
