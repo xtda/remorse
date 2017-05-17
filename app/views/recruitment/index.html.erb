@@ -77,7 +77,7 @@
             <%= form_for(@recruitment,url: { controller: 'recruitment', action: 'update'}) do |f| %>
                 <%= f.hidden_field :setting %>
                 <div class="submit-field">
-                    <%= f.submit "Update recruitment", class: "btn btn-success",id: 'submit-update' %>
+                    <%= f.submit "Update recruitment", class: "btn btn-outline-success",id: 'submit-update' %>
                 </div>
             <% end %>
     </div>

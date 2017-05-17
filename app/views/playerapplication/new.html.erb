@@ -13,8 +13,8 @@
      </div>
     <% if true %>
     <div class="form-group">
-        <%= f.button 'Auto populate', class: 'btn btn-success',id: 'prefill','aria-describedby': 'autoHelp','data-loading-text': "<i class='fa fa-circle-o-notch fa-spin'></i> Loading"%>
-        <%= f.button 'Manual', class: 'btn btn-primary',id: "manual" %>
+        <%= f.button 'Auto populate', class: 'btn btn-outline-success',id: 'prefill','aria-describedby': 'autoHelp','data-loading-text': "<i class='fa fa-circle-o-notch fa-spin'></i> Loading"%>
+        <%= f.button 'Manual', class: 'btn btn-outline-primary',id: "manual" %>
         <small id="autoHelp" class="form-text text-muted">Auto populate information from the armory based on current spec</small>
         <small id="autoHelp" class="form-text text-muted">If no character is found you can manually enter details</small>
     </div>
@@ -75,7 +75,7 @@
     </div>
     <%= recaptcha_tags %>
     <div class="submit-field">
-        <%= f.submit "Apply", class: "btn btn-success"  %>
+        <%= f.submit "Apply", class: "btn btn-outline-success"  %>
      </div>
      </div>
 <% end %>
