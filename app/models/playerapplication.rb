@@ -21,7 +21,7 @@ class Playerapplication < ApplicationRecord
                                 "**Name:** #{player_name}\n" \
                                 "**Class:** #{player_class}\n" \
                                 "**Spec:** #{player_mainspec}\n\n" \
-                                "Click here to view: http://remorse.addictionsoftware.com/application/#{id}?viewkey=#{viewkey}")
+                                "Click here to view: #{ENV['ROOT_URL']}/application/#{id}?viewkey=#{viewkey}")
   end
 
 end
