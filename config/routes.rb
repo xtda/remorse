@@ -8,14 +8,15 @@ Rails.application.routes.draw do
   patch 'page/:id', to: 'posts#update'
   get 'page', to: 'posts#index'
   delete 'page/:id', to: 'posts#destroy'
+  get '/admin/feature', to: 'posts#feature_edit', as: 'feature'
 
   get '/apply', to: 'playerapplication#new'
   get 'application/:id', to: 'playerapplication#show', as: 'playerapplication'
   get 'application', to: 'playerapplication#index'
   post 'apply', to: 'playerapplication#create', as: 'playerapplications'
 
-  get 'recruitment', to: 'recruitment#index',as: 'recruitment'
-  patch 'recruitment', to: 'recruitment#update'
+  get '/admin/recruitment', to: 'recruitment#index', as: 'recruitment'
+  patch '/admin/recruitment', to: 'recruitment#update'
 
   namespace :admin do
     resources :users

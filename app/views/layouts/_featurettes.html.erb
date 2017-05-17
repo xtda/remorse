@@ -1,21 +1,9 @@
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">Remorse </h2>
-          <b>Remorse</b> is a 3 day a week progression guild that was formed
-with multiple talented and mechanically well versed players that
-host extensive game knowledge whom want to progress on a more laid
-back schedule.<br>
-<br>
-<b>Raid Times:</b><br>
-<ul>
-<li>Wednesday: 8:00pm – 11:00pm SVT (Invites @ 7:45pm)</li>
-<li>Sunday: 8:00pm – 11:00pm SVT (Invites @ 7:45pm)</li>
-<li>Monday: 8:00pm – 11:00pm SVT (Invites @ 7:45pm)</li>
-</ul>
-<br>
-Ishyy - Ishy#1805<br>
-Elmasterbato - Elmasterbato#1339<br>
-Pharma - MauiWowie#1402<br>
+          <h2 class="featurette-heading"><%= sanitize @featurette.title %></h2>
+          <p class="lead">
+          <%= sanitize @featurette.content %>
+          </p>
         </div>
         <div class="col-md-5">
           <%= render 'layouts/recruiting' %>
@@ -23,5 +11,3 @@ Pharma - MauiWowie#1402<br>
       </div>
 
 <hr class="featurette-divider">
-
-

@@ -1,8 +1,10 @@
 class Post < ApplicationRecord
   validates :title, presence: true
-  validates :short_desc, presence: true
+  #validates :short_desc, presence: true
   #validates :content, presence: true
   #validates :published, presence: true
+
+  scope :post, -> {where(featurette: false)}
 
   extend FriendlyId
   friendly_id :title, use: :slugged

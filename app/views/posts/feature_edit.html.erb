@@ -1,0 +1,10 @@
+<%= form_for(@post) do |f| %>
+  <div class="field">
+    <%= f.label :title, 'Title '%>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  </br>
+  <%= f.text_area :content, id: 'content',value: @post.content %>
+  </br>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>
