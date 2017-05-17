@@ -29,8 +29,5 @@ $ ->
       $('#manual').click (event) ->
         event.preventDefault()
         $('#details').show();
-      $('#content').trumbowyg()
-
-      
-  #$(document).ready(ready)
+      $('#content').trumbowyg svgPath: '<%= asset_path("icons.svg")%>'
   $(document).on('turbolinks:load', ready)
