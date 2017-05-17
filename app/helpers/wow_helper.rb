@@ -1,6 +1,6 @@
 module WowHelper
 
-  API_KEY = 'xatgfhyag79xfmqqsyak7nds39mxfmrw'.freeze
+  API_KEY = ENV['BNET_API_KEY']
 
   def player_information(name, realm)
     armory = armory_information(name, realm)
