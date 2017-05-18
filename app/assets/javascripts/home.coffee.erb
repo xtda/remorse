@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+recruiting_array = {}
+
 getUser = (realm, name) ->
   $.getJSON '/v1/app/' + name + '/' + realm, (data) ->
     $.each data, (key, value) ->
@@ -14,6 +16,47 @@ getUser = (realm, name) ->
     return
   $('#details').show();
   return
+
+displayRecruitmentWidget = ->
+  $.getJSON '/v1/recuriting', (data) ->
+    $.each data, (key, value) ->
+      $.each value, (cclass, v) ->
+        $.each v, (spec, vv) ->
+          if vv == true
+            $('#' + cclass + '_' + spec + '_spec').show()
+            $('#' + cclass + '_class_icon').show()
+            $('.' + cclass + '_icons').show()
+          return
+        return
+      return
+    return
+  return
+
+displaySpec = ->
+  $.getJSON '/v1/recuriting', (data) ->
+    recruiting_array = data
+    $.each data, (key, value) ->
+      $.each value, (cclass, v) ->
+        $.each v, (spec, vv) ->
+          if vv == false
+            toggleSpec cclass + '_' + spec + '_spec', cclass, spec
+          return
+        return
+      return
+    return
+  return
+
+toggleSpec = (id, cclass, spec) ->
+  if $('#' + id).attr('data-disabled') == 'false' or $('#' + id).attr('data-disabled') == undefined
+    $('#' + id).fadeTo 'fast', 0.3, ->
+    $('#' + id).attr 'data-disabled', 'true'
+    recruiting_array['class'][cclass][spec] = false
+  else
+    $('#' + id).fadeTo 'fast', 1.0, ->
+    $('#' + id).attr 'data-disabled', 'false'
+    recruiting_array['class'][cclass][spec] = true
+  return
+
 
 $ ->
   ready = ->
@@ -30,4 +73,18 @@ $ ->
         event.preventDefault()
         $('#details').show();
       $('#content').trumbowyg svgPath: '<%= asset_path("icons.svg")%>'
+      if $('.class_icons').length
+        displayRecruitmentWidget()
+      if $('.class_icons_admin img').length
+        displaySpec()
+      $('.class_icons_admin img').click ->
+        btn_pressed = $(this).attr('id')
+        class_spec = btn_pressed.split('_')
+        if class_spec[1] == 'class'
+          return
+        toggleSpec $(this).attr('id'), class_spec[0], class_spec[1]
+        return
+      $('#submit-update').click (event) ->
+        $('#setting_setting').val JSON.stringify(recruiting_array)
+        return
   $(document).on('turbolinks:load', ready)

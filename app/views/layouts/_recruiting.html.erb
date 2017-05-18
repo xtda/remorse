@@ -78,28 +78,3 @@
             <br/>
  
     </div>
-
-<script>
-
- $(document).ready(function(){ 
-        displaySpec();
- });
- 
- function displaySpec() {
-       $.getJSON('/v1/recuriting', function(data) {
-      $.each(data, function(key, value) {
-        $.each(value,function(cclass, v) {
-			    $.each(v, function(spec, vv) {
-				if(vv === true) {
-                $('#' + cclass + "_" + spec + "_spec").show();
-                $('#' + cclass + "_class_icon").show();
-                $('.' + cclass + "_icons").show();
-            }
-			    });
-		    });
-      });
-    });
- }
-
-
- </script>
