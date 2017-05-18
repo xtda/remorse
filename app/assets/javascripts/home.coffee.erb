@@ -87,4 +87,7 @@ $ ->
       $('#submit-update').click (event) ->
         $('#setting_setting').val JSON.stringify(recruiting_array)
         return
+      <% if Rails.env.production? %>
+      ga 'send', 'pageview', window.location.pathname + window.location.search
+      <% end %>
   $(document).on('turbolinks:load', ready)
