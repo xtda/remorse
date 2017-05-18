@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
- 
   get 'page/new', to: 'posts#new', as: 'posts'
   get 'page/:id', to: 'posts#show', as: 'post'
   post 'page/new', to: 'posts#create'
