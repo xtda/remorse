@@ -4,7 +4,6 @@ class PostsController < ApplicationController
   def index
     @posts = Post.where(featurette: false).page(params[:page]).per(20)
                  .order('created_at desc')
-
   end
 
   def show

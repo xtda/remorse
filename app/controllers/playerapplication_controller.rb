@@ -1,4 +1,6 @@
 class PlayerapplicationController < ApplicationController
+  before_action :authenticate_admin, only: [:index, :destroy]
+
   def new
     @REALM_LIST = ["Aegwynn", "Aerie Peak", "Agamaggan", "Aggramar", "Akama", "Alexstrasza", "Alleria", "Altar of Storms", "Alterac Mountains",
          "Aman'Thul", "Anasterian", "Andorhal", "Anetheron", "Antonidas", "Anub'arak", "Anvilmar", "Arathor", "Archimonde", "Area 52",
@@ -72,8 +74,9 @@ class PlayerapplicationController < ApplicationController
   end
 
   def index
-    redirect_to root_url
-    #@applications = Playerapplication.all
+    return redirect_to root_url unless logged_in?
+    redirect_to root_url unless current_user.admin? || current_user.dev?
+    @applications = Playerapplication.page(params[:page]).per(20).order('created_at desc')
   end
 
   def show
@@ -82,8 +85,20 @@ class PlayerapplicationController < ApplicationController
     redirect_to root_url unless @application.viewkey == params[:viewkey] 
   end
 
+  def destroy
+    application = Playerapplication.find(params[:id])
+    application.destroy!
+    flash[:success] = 'Application deleted'
+    redirect_to applications_path
+  end
 
   private
+
+  def authenticate_admin
+    return redirect_to root_url unless logged_in?
+    redirect_to root_url unless current_user.admin? || current_user.dev?
+  end
+
 
   def application_params
     params.require(:playerapplication).permit(

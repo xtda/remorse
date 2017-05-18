@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   get '/apply', to: 'playerapplication#new'
   get 'application/:id', to: 'playerapplication#show', as: 'playerapplication'
-  get 'application', to: 'playerapplication#index'
+  delete 'application/:id', to: 'playerapplication#destroy'
+  get 'applications', to: 'playerapplication#index'
   post 'apply', to: 'playerapplication#create', as: 'playerapplications'
 
   get '/admin/recruitment', to: 'recruitment#index', as: 'recruitment'
