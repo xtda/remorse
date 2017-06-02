@@ -9,6 +9,15 @@ class Playerapplication < ApplicationRecord
 
   before_create :generate_viewkey
   after_save :send_to_discord
+  attr_accessor :links_warcraftlogs
+
+  def links_warcraftlogs
+    link_warcraftlogs.split(' ')
+  end
+
+  def links_wowprogress
+    link_wowprogress.split(' ')
+  end
 
   private
 
@@ -23,5 +32,6 @@ class Playerapplication < ApplicationRecord
                                 "**Spec:** #{player_mainspec}\n\n" \
                                 "Click here to view: #{ENV['ROOT_URL']}/application/#{id}?viewkey=#{viewkey}")
   end
+
 
 end

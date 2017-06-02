@@ -65,12 +65,16 @@ class PlayerapplicationController < ApplicationController
          "Uldaman", "Uldum", "Undermine", "Ursin", "Uther", "Vashj", "Vek'nilash", "Velen", "Warsong", "Whisperwind",
          "Wildhammer", "Windrunner", "Winterhoof", "Wyrmrest Accord", "Ysera", "Ysondre", "Zangarmarsh", "Zul'jin", "Zuluhed"]
     @application = Playerapplication.new(application_params)
-    if verify_recaptcha(model: @application, message: 'ReCAPTCHA verification failed') && @application.save
+    if Rails.env.development?
+      if @application.save
+        flash[:success] = 'Application Successful we will be in touch'
+        return redirect_to root_url
+      end
+    elsif verify_recaptcha(model: @application, message: 'ReCAPTCHA verification failed') && @application.save
       flash[:success] = 'Application Successful we will be in touch'
-      redirect_to root_url
-    else
-      render 'new'
+      return redirect_to root_url
     end
+    render 'new'
   end
 
   def index

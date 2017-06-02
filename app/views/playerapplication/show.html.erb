@@ -1,9 +1,16 @@
 <h2><p>Application Details:</p></h2>
 <p><strong>Battle.net:</strong> <%= @application.player_battlenettag %>
 <br>
-<strong>Warcraft Logs:</strong> <%= link_to @application.link_warcraftlogs, @application.link_warcraftlogs,target: "_blank",rel: "noopener noreferrer"%>
+
+<strong>Warcraft Logs:</strong>
+<% @application.links_warcraftlogs.each do |link| %>
+<br/><%= link_to link, link,target: "_blank",rel: "noopener noreferrer"%>
+<% end %>
 <br>
-<strong>WoW Progress:</strong> <%= link_to @application.link_wowprogress, @application.link_wowprogress,target: "_blank",rel: "noopener noreferrer" %>
+<strong>WoW Progress:</strong> <br/>
+<% @application.links_wowprogress.each do |link| %>
+<%= link_to link, link,target: "_blank",rel: "noopener noreferrer" %>
+<% end %>
 </p>
 <p>
 <strong>Name:</strong> <%= @application.player_name %>
