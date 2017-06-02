@@ -6,7 +6,6 @@
 <% @application.links_warcraftlogs.each do |link| %>
 <br/><%= link_to link, link,target: "_blank",rel: "noopener noreferrer"%>
 <% end %>
-<br>
 <strong>WoW Progress:</strong> <br/>
 <% @application.links_wowprogress.each do |link| %> <br/>
 <%= link_to link, link,target: "_blank",rel: "noopener noreferrer" %>
