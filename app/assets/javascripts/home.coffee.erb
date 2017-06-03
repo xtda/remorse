@@ -17,6 +17,14 @@ getUser = (realm, name) ->
   $('#details').show();
   return
 
+getInformation = (realm,name) -> 
+  $.getJSON '/v1/app/' + name + '/' + realm, (data) ->
+    $.each data, (key, value) ->
+      console.log(value['wow']['raid_progression'])
+      return
+    return
+  return
+
 displayRecruitmentWidget = ->
   $.getJSON '/v1/recuriting', (data) ->
     $.each data, (key, value) ->
@@ -60,9 +68,6 @@ toggleSpec = (id, cclass, spec) ->
 
 $ ->
   ready = ->
-      $('#spec_icons').imagepicker
-        hide_select: true
-        show_label: false
       if $('#error_explanation').length == 0
         $('#details').hide()
       $('#prefill').click (event) ->
