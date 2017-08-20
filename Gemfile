@@ -18,8 +18,10 @@ gem 'turbolinks', '~> 5'
 
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'administrate', git: 'https://github.com/xtda/administrate.git'
+gem 'administrate'#, git: 'https://github.com/xtda/administrate.git'
 gem 'administrate-field-password'
+
+gem 'active_model_serializers'
 
 gem 'kaminari'
 

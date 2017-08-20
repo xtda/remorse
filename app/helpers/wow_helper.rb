@@ -1,5 +1,4 @@
 module WowHelper
-
   API_KEY = ENV['BNET_API_KEY']
 
   def player_information(name, realm)
@@ -7,12 +6,12 @@ module WowHelper
     player = [
       wow: {
         name: armory['name'],
-        class: player_class(armory['class']),
-        spec: player_spec(armory['talents']),
+        class: player_class_is(armory['class']),
+        spec: player_spec_is(armory['talents']),
         gear: {
           equip_ilvl: armory['items']['averageItemLevelEquipped'],
           max_ilvl: armory['items']['averageItemLevel'],
-          artifact: weapon_info(armory['items'], 'resto')
+          artifact: weapon_info(armory['items'], player_class_is(armory['talents']))
         },
         raid_progression: raid_progression(armory['progression'])
       },
@@ -33,24 +32,44 @@ module WowHelper
     JSON.parse(request)
   end
 
-  def player_class(value)
+  def guildarmory_information(name, realm)
+    uri = URI.encode("https://us.api.battle.net/wow/guild/#{realm}/#{name}?fields=members&locale=en_US&apikey=xatgfhyag79xfmqqsyak7nds39mxfmrw")
+    request = RestClient.get(uri)
+    JSON.parse(request)
+  end
+
+  def guild_roster(realm, name, rank)
+    guild = guildarmory_information(name, realm)
+    guild['members'].each do |member|
+      next unless member['rank'] <= rank.to_i
+      next if member['rank'].to_i == 2 || member['rank'].to_i == 4
+      Roster.create_member(member)
+    end
+  end
+
+  def player_class_is(value)
     classes = ['Warrior', 'Paladin', 'Hunter', 'Rogue', 'Priest', \
                'Death Knight', 'Shaman', 'Mage', 'Warlock', \
                'Monk', 'Druid', 'Demon Hunter'].freeze
     classes.at(value - 1)
   end
 
-  def player_spec(value)
+  def player_spec_is(value)
     value.each do |key|
-      if key['selected'] == true
-        return key['spec']['name']
-      end
+      return key['spec']['name'] if key['selected'] == true
     end
   end
 
   def weapon_info(items, player_spec)
-    player_spec == 'protection' ? weapon_info = items['offHand']['artifactTraits'] : weapon_info = items['mainHand']['artifactTraits']
+    player_spec == 'Protection' ? weapon_info = items['offHand']['artifactTraits'] : weapon_info = items['mainHand']['artifactTraits']
     weapon_info.map { |s| s['rank'] }.reduce(0, :+) - 3
+  end
+
+  def ranged?(player)
+    return true if player.player_class == 5 || player.player_class == 8 || \
+                   player.player_class == 9 || player.player_spec == 'Balance' || \
+                   player_spec == 'Survival' || player_spec == 'Elemental'
+    false
   end
 
   def raid_progression(armory_progression)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170517032733) do
+ActiveRecord::Schema.define(version: 20170820055819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,19 @@ ActiveRecord::Schema.define(version: 20170517032733) do
     t.string "slug"
     t.boolean "featurette", default: false
     t.index ["slug"], name: "index_posts_on_slug", unique: true
+  end
+
+  create_table "rosters", force: :cascade do |t|
+    t.string "player_name"
+    t.integer "player_class"
+    t.string "thumbnail_link"
+    t.integer "role"
+    t.boolean "hidden", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "player_spec"
+    t.index ["hidden"], name: "index_rosters_on_hidden"
+    t.index ["player_name"], name: "index_rosters_on_player_name", unique: true
   end
 
   create_table "settings", force: :cascade do |t|

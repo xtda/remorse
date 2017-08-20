@@ -18,16 +18,22 @@ Rails.application.routes.draw do
   get '/admin/recruitment', to: 'recruitment#index', as: 'recruitment'
   patch '/admin/recruitment', to: 'recruitment#update'
 
+  get '/roster', to: 'roster#index', as: 'roster'
+  get '/roster/update', to: 'roster#new', as: 'roster_update'
+  #get 'roster/show', to: 'roster#show'
+
   namespace :admin do
     resources :users
+    resources :rosters
     root to: 'users#index'
   end
 
   scope module: 'api' do
     namespace :v1 do
       get 'health', to: 'health#index'
-      get 'app/:char/:realm', to: 'guildapp#show'
+      get 'app/:realm/:char', to: 'guildapp#show'
       get 'recuriting', to: 'guildapp#recruiting'
+      get 'roster', to: 'roster#index'
     end
   end
 

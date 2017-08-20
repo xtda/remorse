@@ -28,10 +28,3 @@ Post.create(title: 'Remorse',
 )
 
 
-  99.times do |n|
-  Playerapplication.create(title: "I got #{n + 1} problems",
-              short_desc: "But a bitch ain't one",
-              content: 'Hello Worlds',
-              published: true
-             )
-  end

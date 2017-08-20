@@ -5,7 +5,7 @@
 recruiting_array = {}
 
 getUser = (realm, name) ->
-  $.getJSON '/v1/app/' + name + '/' + realm, (data) ->
+  $.getJSON '/v1/app/' + realm + '/' + name, (data) ->
     $.each data, (key, value) ->
       $('#playerapplication_player_class').val value['wow']['class']
       $('#playerapplication_player_mainspec').val value['wow']['spec']
@@ -18,7 +18,7 @@ getUser = (realm, name) ->
   return
 
 getInformation = (realm,name) -> 
-  $.getJSON '/v1/app/' + name + '/' + realm, (data) ->
+  $.getJSON '/v1/app/' + realm + '/' + name, (data) ->
     $.each data, (key, value) ->
       console.log(value['wow']['raid_progression'])
       return
