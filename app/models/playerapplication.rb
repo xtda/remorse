@@ -28,6 +28,7 @@ class Playerapplication < ApplicationRecord
   def send_to_discord
     send_to_recruitment_channel("**New application submitted**\n" \
                                 "**Name:** #{player_name}\n" \
+                                "**Battle.net:** #{player_battlenettag}\n" \
                                 "**Class:** #{player_class}\n" \
                                 "**Spec:** #{player_mainspec}\n\n" \
                                 "Click here to view: #{ENV['ROOT_URL']}/application/#{id}?viewkey=#{viewkey}")
