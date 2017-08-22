@@ -7,7 +7,7 @@ module Api::V1
     end
 
     def show
-      render json: player_information(params[:char], params[:realm])
+      render json: player_information(params[:realm], params[:char])
     end
 
     def recruiting

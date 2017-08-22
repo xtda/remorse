@@ -1,8 +1,9 @@
 module WowHelper
   API_KEY = ENV['BNET_API_KEY']
 
-  def player_information(name, realm)
-    armory = armory_information(name, realm)
+  def player_information(realm, name)
+    armory = armory_information(realm, name)
+    #return player_class_is(armory['class'])
     player = [
       wow: {
         name: armory['name'],
@@ -11,7 +12,7 @@ module WowHelper
         gear: {
           equip_ilvl: armory['items']['averageItemLevelEquipped'],
           max_ilvl: armory['items']['averageItemLevel'],
-          artifact: weapon_info(armory['items'], player_class_is(armory['talents']))
+          artifact: weapon_info(armory['items'], player_spec_is(armory['talents']))
         },
         raid_progression: raid_progression(armory['progression'])
       },
@@ -26,20 +27,20 @@ module WowHelper
     player.to_json
   end
 
-  def armory_information(name, realm)
+  def armory_information(realm, name)
     uri = URI.encode("https://us.api.battle.net/wow/character/#{realm}/#{name}?fields=items,progression,guild,achievements,talents&apikey=#{API_KEY}")
     request = RestClient.get(uri)
     JSON.parse(request)
   end
 
-  def guildarmory_information(name, realm)
+  def guildarmory_information(realm, name)
     uri = URI.encode("https://us.api.battle.net/wow/guild/#{realm}/#{name}?fields=members&locale=en_US&apikey=xatgfhyag79xfmqqsyak7nds39mxfmrw")
     request = RestClient.get(uri)
     JSON.parse(request)
   end
 
   def guild_roster(realm, name, rank)
-    guild = guildarmory_information(name, realm)
+    guild = guildarmory_information(realm, name)
     guild['members'].each do |member|
       next unless member['rank'] <= rank.to_i
       next if member['rank'].to_i == 2 || member['rank'].to_i == 4

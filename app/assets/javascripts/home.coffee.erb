@@ -7,7 +7,7 @@ recruiting_array = {}
 getUser = (realm, name) ->
   $.getJSON '/v1/app/' + realm + '/' + name, (data) ->
     $.each data, (key, value) ->
-      $('#playerapplication_player_class').val value['wow']['class']
+      $('#playerapplication_player_class').val value['wow']['class'].replace(/ /g,'');
       $('#playerapplication_player_mainspec').val value['wow']['spec']
       $('#playerapplication_player_mainspec_awt').val value['wow']['gear']['artifact']
       $('#playerapplication_link_wowprogress').val value['wowprogress']['link']
