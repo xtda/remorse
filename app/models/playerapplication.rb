@@ -31,6 +31,8 @@ class Playerapplication < ApplicationRecord
                                 "**Battle.net:** #{player_battlenettag}\n" \
                                 "**Class:** #{player_class}\n" \
                                 "**Spec:** #{player_mainspec}\n\n" \
+                                "**Logs:** #{link_warcraftlogs}\n" \
+                                "**WoW Progress:** #{link_wowprogress}\n\n" \
                                 "Click here to view: #{ENV['ROOT_URL']}/application/#{id}?viewkey=#{viewkey}")
   end
 
