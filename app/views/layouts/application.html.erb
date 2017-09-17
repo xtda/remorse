@@ -7,7 +7,7 @@
     
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <% if current_page?(root_url) %>
+    <% if false #current_page?(root_url) %>
       <%= stylesheet_link_tag    'home', media: 'all', 'data-turbolinks-track': 'reload' %>
     <% end %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -24,10 +24,11 @@
 
   <body>
     <%= render 'layouts/menubar' %>
-    <% if current_page?(root_url) %>
+    <% if false #current_page?(root_url) %>
       <%= render 'layouts/carousel' %>
     <% end %>
-    <div class="container content">
+    <br/>
+    <div class="container content main" >
       <%= render 'layouts/flash' %>
       <% if current_page?(root_url) %>
         <%= render 'layouts/featurettes' %>

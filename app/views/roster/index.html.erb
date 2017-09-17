@@ -8,7 +8,7 @@
           <div class="card-block">
           <img src="<%= asset_path("#{member.role}.png")%>" style="position: absolute; width: 40px; height: 40px; bottom: 20px;"  class="float-left img-responsive" ></img> 
             <img style="padding-right: 5px;" class="float-left" src="https://render-us.worldofwarcraft.com/character/<%= member.thumbnail_link %>" onError="this.onerror=null;this.src='<%= asset_path("no-avatar.jpg")%>';" >       
-            <h5 style="color:black"><%= member.player_name %></h5> 
+            <h6 style="color:black"><%= member.player_name %></h6> 
             <a target="_blank" rel="noopener noreferrer" href="https://worldofwarcraft.com/en-us/character/frostmourne/<%= member.player_name %>"><img src="<%= asset_path("armory.png")%>" style="width: 34px; height: 34px;"></a>
             <a target="_blank" rel="noopener noreferrer" href="https://www.wowprogress.com/character/us/frostmourne/<%= member.player_name %>"><img src="<%= asset_path("wowprog.png")%>" style="width: 34px; height: 34px;"></a>
           </div>

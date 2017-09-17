@@ -77,7 +77,9 @@ $ ->
       $('#manual').click (event) ->
         event.preventDefault()
         $('#details').show();
-      $('#content').trumbowyg svgPath: '<%= asset_path("icons.svg")%>'
+      $('#content').trumbowyg 
+        resetCss: true
+        svgPath: '<%= asset_path("icons.svg")%>'
       if $('.class_icons').length
         displayRecruitmentWidget()
       if $('.class_icons_admin img').length
